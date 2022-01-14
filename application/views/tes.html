@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id="Names">
+    	This is a list of Names
+    </div>
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+	<script type="text/javascript">
+        $(document).ready(function() {
+			$.ajax({
+		  	url: "https://reqres.in/api/users?per_page=10",
+		    dataType: "json",
+		    success: function(result) {
+		    	$.each(result.data, function(index, value) { 
+		      	var myName = value.first_name + " " + value.last_name;
+		      	$("#Names").append("<div>" + myName + "</div>");
+		      });
+		    }
+		  })
+
+		})
+    </script>
+</body>
+</html>
